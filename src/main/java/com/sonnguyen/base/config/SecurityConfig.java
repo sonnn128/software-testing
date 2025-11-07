@@ -26,14 +26,25 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizeHttpRequest ->
-                        authorizeHttpRequest.requestMatchers(
+                        authorizeHttpRequest
+                                .requestMatchers(
+                                        "GET", "/api/v1/products"
+                                )
+                                .permitAll()
+                                .requestMatchers(
+                                        "GET", "/api/v1/categories",
+                                        "GET", "/api/v1/categories/{id}"
+                                )
+                                .permitAll()
+                                .requestMatchers(
                                         "/api/v1/auth/register"
                                         , "/api/v1/auth/login"
                                         , "/api/v1/auth/token"
                                         , "/api/v1/users/**"
                                 //        , "/**"
                                         , "/api/v1/admin/public"
-                                        , "/api/v1/docs/**")
+                                        , "/api/v1/docs/**"
+                                )
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()
@@ -45,6 +56,4 @@ public class SecurityConfig {
 
         return http.build();
     }
-
-
 }

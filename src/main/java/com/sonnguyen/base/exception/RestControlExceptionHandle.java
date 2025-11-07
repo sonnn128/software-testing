@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @ControllerAdvice
 public class RestControlExceptionHandle {
     @ExceptionHandler({CommonException.class})
@@ -23,14 +26,21 @@ public class RestControlExceptionHandle {
                         .build());
     }
 
-    @ExceptionHandler({MethodArgumentNotValidException.class})
+    @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
-    public ResponseEntity<ApiResponse<?>> resolveInvalidException(MethodArgumentNotValidException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiResponse.builder()
-                .message(e.getAllErrors().get(0).getDefaultMessage())
+    public ResponseEntity<ApiResponse<?>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getFieldErrors().forEach(error -> {
+            errors.put(error.getField(), error.getDefaultMessage());
+        });
+
+        return ResponseEntity.badRequest().body(ApiResponse.builder()
+                .message("Dữ liệu không hợp lệ")
+                .errors(errors)
                 .success(false)
                 .build());
     }
+
 
     @ExceptionHandler({AuthenticationException.class})
     @ResponseBody
@@ -56,7 +66,7 @@ public class RestControlExceptionHandle {
 
     @ExceptionHandler({Exception.class})
     @ResponseBody
-    public ResponseEntity<ApiResponse<?>> resolveAccessDeniedException(Exception e) {
+    public ResponseEntity<ApiResponse<?>> resolveException(Exception e) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(
                 ApiResponse.builder()
                         .message(e.getMessage())

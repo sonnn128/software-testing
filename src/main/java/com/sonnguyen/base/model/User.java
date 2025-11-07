@@ -36,7 +36,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -44,6 +44,4 @@ public class User {
     )
     private Set<Role> roles;
 
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private Set<Post> posts;
 }

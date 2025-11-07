@@ -21,7 +21,7 @@ public class Role implements GrantedAuthority {
     private String name;
     private Boolean isDefault;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "role_permission",
             joinColumns = @JoinColumn(name = "role_id"),
