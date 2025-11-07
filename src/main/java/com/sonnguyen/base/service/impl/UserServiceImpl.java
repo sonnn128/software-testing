@@ -17,10 +17,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -123,11 +122,15 @@ public class UserServiceImpl implements UserService {
         if (adminUpdateUserDtoIn.getStatus() != null) {
             user.setStatus(adminUpdateUserDtoIn.getStatus());
         }
+
         if (adminUpdateUserDtoIn.getRoles() != null) {
-            user.setRoles(Set.of((Role) adminUpdateUserDtoIn.getRoles().stream().map(roleRepository::findByName)));
+            Set<Role> roles = adminUpdateUserDtoIn.getRoles().stream()
+                    .map(roleRepository::findByName)
+                    .collect(Collectors.toSet());
+            user.setRoles(roles);
         }
+
         User savedUser = userRepository.save(user);
         return UserDto.from(savedUser);
     }
-
 }

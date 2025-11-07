@@ -29,6 +29,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         createUser();
+        createPermission();
     }
 
     private void createUser(){

@@ -12,6 +12,8 @@ public class Permission implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    // just READ
+    // Long for CRUD
     private String name;
     private String description;
 

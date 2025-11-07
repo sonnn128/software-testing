@@ -1,0 +1,746 @@
+{
+	"info": {
+		"_postman_id": "e6e9278b-ad0a-475a-93ed-5a477626c936",
+		"name": "5. spring-rest-api-base",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34248647"
+	},
+	"item": [
+		{
+			"name": "post api",
+			"item": [
+				{
+					"name": "admin page",
+					"item": [
+						{
+							"name": "admin page",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token-8080}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url-8080}}/admin",
+									"host": [
+										"{{url-8080}}"
+									],
+									"path": [
+										"admin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getposts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url-8080}}/posts",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"title\",\r\n    \"content\": \"content\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/posts",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth api - 3",
+			"item": [
+				{
+					"name": "token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/auth/token",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/auth/login",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"abcdefghj\",\n    \"password\": \"username\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/auth/register",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "me api - 3",
+			"item": [
+				{
+					"name": "profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/me",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"admin12345\",\r\n    \"newPassword\": \"admin123456\",\r\n    \"confirmPassword\": \"admin123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/me/change-password",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"me",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\": \"admin12345\",\r\n    \"phoneNumber\": \"phoneNumber\",\r\n    \"description\": \"description\",\r\n    \"email\": \"sonvipkl04@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/me",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user api - 6",
+			"item": [
+				{
+					"name": "get users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\": \"admin12345\",\r\n    \"phoneNumber\": \"phoneNumber\",\r\n    \"description\": \"description\",\r\n    \"email\": \"sonvipkl04@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url-8080}}/users?page=1&size=10&sortBy=id&order=desc&search=",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sortBy",
+									"value": "id"
+								},
+								{
+									"key": "order",
+									"value": "desc"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\": \"admin12345\",\r\n    \"phoneNumber\": \"phoneNumber\",\r\n    \"description\": \"description\",\r\n    \"email\": \"sonvipkl04@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url-8080}}/users/1b2b6843-50d7-412e-9ca3-77cd23f12009",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"users",
+								"1b2b6843-50d7-412e-9ca3-77cd23f12009"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"john_doe\",\r\n  \"password\": \"Pass@1234\",\r\n  \"roles\": [\r\n    \"ADMIN\", \"USER\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/users",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"Pass@1234\",\r\n  \"newPassword\": \"NewPass@1234\",\r\n  \"confirmPassword\": \"NewPass@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/users/1b2b6843-50d7-412e-9ca3-77cd23f12009",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"users",
+								"1b2b6843-50d7-412e-9ca3-77cd23f12009"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": 1,\r\n    \"roles\": [\"ADMIN\", \"USER\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/users/1b2b6843-50d7-412e-9ca3-77cd23f12009",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"users",
+								"1b2b6843-50d7-412e-9ca3-77cd23f12009"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"john_updated\",\r\n  \"email\": \"john@example.com\",\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/users/90ecec4b-3e35-45cf-bcf1-0f5e946fff23",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"users",
+								"90ecec4b-3e35-45cf-bcf1-0f5e946fff23"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "role api - 4",
+			"item": [
+				{
+					"name": "get roles",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url-8080}}/roles",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"STAFF2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/roles",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit role by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"ADMIN_UPDATED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/roles/52",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"roles",
+								"52"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete role by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"ADMIN_UPDATED\",\r\n  \"permissionIds\": [1, 2, 3]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/roles/55",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"roles",
+								"55"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "permission api - 1",
+			"item": [
+				{
+					"name": "get permissions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"USER\",\r\n  \"permissionIds\": [9, 10, 11]\r\n}"
+						},
+						"url": {
+							"raw": "{{url-8080}}/permissions",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"permissions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

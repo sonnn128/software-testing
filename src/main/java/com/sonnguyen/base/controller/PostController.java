@@ -32,7 +32,6 @@ public class PostController {
     @PostMapping
     public ResponseEntity<?> createPost(@RequestBody PostDto req) {
         User user = authService.getCurrentUser();
-//        return postRepository.save(post);
         return ResponseEntity.ok().body(
                 ApiResponse.builder()
                         .data(postService.createPost(req))

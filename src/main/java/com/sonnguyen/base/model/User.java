@@ -36,7 +36,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
