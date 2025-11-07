@@ -1,77 +1,19 @@
 {
 	"info": {
 		"_postman_id": "e6e9278b-ad0a-475a-93ed-5a477626c936",
-		"name": "5. spring-rest-api-base",
+		"name": "5. software testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "34248647"
 	},
 	"item": [
 		{
-			"name": "post api",
+			"name": "admin page",
 			"item": [
 				{
 					"name": "admin page",
-					"item": [
-						{
-							"name": "admin page",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token-8080}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url-8080}}/admin",
-									"host": [
-										"{{url-8080}}"
-									],
-									"path": [
-										"admin"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "getposts",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url-8080}}/posts",
-							"host": [
-								"{{url-8080}}"
-							],
-							"path": [
-								"posts"
-							]
-						}
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
 					},
-					"response": []
-				},
-				{
-					"name": "create post",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -83,11 +25,11 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"title\",\r\n    \"content\": \"content\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -95,12 +37,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url-8080}}/posts",
+							"raw": "{{url-8080}}/admin",
 							"host": [
 								"{{url-8080}}"
 							],
 							"path": [
-								"posts"
+								"admin"
 							]
 						}
 					},
@@ -735,6 +677,256 @@
 							],
 							"path": [
 								"permissions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product api - 2",
+			"item": [
+				{
+					"name": "get all products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Áo thun nam\",\r\n  \"description\": \"Áo thun cotton chất lượng cao\",\r\n  \"price\": 199000,\r\n  \"quantity\": 50,\r\n  \"categoryId\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/products",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Áo thun\",\r\n  \"description\": \"Áo thun cotton chất lượng cao\",\r\n  \"price\": 1000000,\r\n  \"quantity\": 50,\r\n  \"categoryId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/products",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/products/4",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"products",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category api - 2",
+			"item": [
+				{
+					"name": "create category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"ooo1\",\r\n  \"description\": \"\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/categories",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Áo thun nam\",\r\n  \"description\": \"Áo thun cotton chất lượng cao\",\r\n  \"price\": 199000,\r\n  \"quantity\": 50,\r\n  \"categoryId\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/categories",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get products by categoryId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Áo thun nam\",\r\n  \"description\": \"Áo thun cotton chất lượng cao\",\r\n  \"price\": 199000,\r\n  \"quantity\": 50,\r\n  \"categoryId\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/categories/2",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"categories",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-8080}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Áo thun nam\",\r\n  \"description\": \"Áo thun cotton chất lượng cao\",\r\n  \"price\": 199000,\r\n  \"quantity\": 50,\r\n  \"categoryId\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-8080}}/categories/2",
+							"host": [
+								"{{url-8080}}"
+							],
+							"path": [
+								"categories",
+								"2"
 							]
 						}
 					},
